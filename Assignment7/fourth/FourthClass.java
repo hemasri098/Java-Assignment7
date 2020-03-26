@@ -1,5 +1,5 @@
-package com.company.Assignment7.fourth;
-
+package com.company.JavaAssignment7.fourth;
+import java.util.logging.Logger;
 
 interface Cycle {
     void balance();
@@ -10,19 +10,22 @@ interface CycleFactory {
 }
 
 class UniCycle implements Cycle {
+    Logger LOGGER = Logger.getAnonymousLogger();
     public void balance() {
-        System.out.println("balancing unicycle");
+        LOGGER.info("balancing unicycle");
     }
 }
 
 class BiCycle implements Cycle {
+    Logger LOGGER = Logger.getAnonymousLogger();
     public void balance() {
-        System.out.println("balancing bicycle");
+        LOGGER.info("balancing bicycle");
     }
 }
 class TriCycle implements Cycle {
+    Logger LOGGER = Logger.getAnonymousLogger();
     public void balance() {
-        System.out.println("balancing tricycle");
+        LOGGER.info("balancing tricycle");
     }
 }
 
@@ -49,14 +52,20 @@ class TriCycleFactory implements CycleFactory {
 
 
 public class FourthClass {
+    public static Logger LOGGER = Logger.getAnonymousLogger();
     public static void callFactory(CycleFactory factory) {
         Cycle cycle = factory.cycleType();
         cycle.balance();
     }
     public static void main(String[] args) {
-        UniCycle cycle = new UniCycle();
-        cycle.balance();
-        callFactory(new BiCycleFactory());
-        callFactory(new TriCycleFactory());
+        try {
+            UniCycle cycle = new UniCycle();
+            cycle.balance();
+            callFactory(new BiCycleFactory());
+            callFactory(new TriCycleFactory());
+        }
+        catch(Exception e) {
+            LOGGER.info("Exception: " + e);
+        }
     }
 }
