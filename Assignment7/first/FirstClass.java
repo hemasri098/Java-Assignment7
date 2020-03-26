@@ -1,4 +1,6 @@
-package com.company.Assignment7.first;
+package com.company.JavaAssignment7.first;
+
+import java.util.logging.Logger;
 
 interface IRodent {
     void food();
@@ -6,67 +8,77 @@ interface IRodent {
 }
 
 class Rodent implements IRodent{
+    Logger LOGGER = Logger.getAnonymousLogger();
     Rodent() {
-        System.out.println("rodent class");
+        LOGGER.info("rodent class");
     }
 
     public void food() {
-        System.out.println("food - rodent");
+        LOGGER.info("food - rodent");
     }
 
     public void walk() {
-        System.out.println("rodent walks");
+        LOGGER.info("rodent walks");
     }
 }
 
 
 class Gerbil extends Rodent{
+    Logger LOGGER = Logger.getAnonymousLogger();
     Gerbil() {
-        System.out.println("gerbil class");
+        LOGGER.info("gerbil class");
     }
     public void food() {
-        System.out.println("food - gerbil");
+        LOGGER.info("food - gerbil");
     }
     public void walk() {
-        System.out.println("gerbil walks");
+        LOGGER.info("gerbil walks");
     }
 }
 
 
 
 class Mouse extends Rodent {
+    Logger LOGGER = Logger.getAnonymousLogger();
     Mouse() {
-        System.out.println("mouse class");
+        LOGGER.info("mouse class");
     }
     public void food() {
-        System.out.println("food - mouse");
+        LOGGER.info("food - mouse");
     }
     public void walk() {
-        System.out.println("mouse walks");
+        LOGGER.info("mouse walks");
     }
 }
 
 class Hamster extends Rodent {
+    Logger LOGGER = Logger.getAnonymousLogger();
     Hamster() {
-        System.out.println("hamster class");
+        LOGGER.info("hamster class");
     }
     public void food() {
-        System.out.println("food - Hamster");
+        LOGGER.info("food - Hamster");
     }
     public void walk() {
-        System.out.println("Hamster walks");
+        LOGGER.info("Hamster walks");
     }
 }
 
 public class FirstClass {
     public static void main(String[] args) {
-        Rodent rodent[] = new Rodent[3];
-        rodent[0] = new Mouse();
-        rodent[1] = new Gerbil();
-        rodent[2] = new Hamster();
-        rodent[0].food();
-        rodent[1].food();
-        rodent[1].walk();
-        rodent[2].food();
+        Logger LOGGER = Logger.getAnonymousLogger();
+        try {
+            Rodent rodent[] = new Rodent[3];
+            rodent[0] = new Mouse();
+            rodent[1] = new Gerbil();
+            rodent[2] = new Hamster();
+            rodent[0].food();
+            rodent[1].food();
+            rodent[1].walk();
+            rodent[2].food();
+        }
+        catch (Exception e) {
+            LOGGER.info("Exception: " + e);
+        }
     }
 }
