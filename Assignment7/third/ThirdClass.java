@@ -1,4 +1,6 @@
-package com.company.Assignment7.third;
+package com.company.JavaAssignment7.third;
+
+import java.util.logging.Logger;
 
 interface IAddition {
     void addNumbers(int a, int b);
@@ -25,6 +27,7 @@ class CalculateB {
     }
 }
 class CalculateA extends CalculateB implements ICalculation {
+    Logger LOGGER = Logger.getAnonymousLogger();
     public void function1(IAddition add) {
         add.addNumbers(1, 2);
 
@@ -45,35 +48,40 @@ class CalculateA extends CalculateB implements ICalculation {
 
     @Override
     public void addNumbers(int a, int b) {
-        System.out.println("adding given two elements " + (a + b));
+        LOGGER.info("adding given two elements " + (a + b));
     }
 
     @Override
     public void multiplyNumbers(int a, int b) {
-        System.out.println("multiplying given two elements " + (a * b));
+        LOGGER.info("multiplying given two elements " + (a * b));
     }
 
     @Override
     public void divideNumbers(int a, int b) {
-        System.out.println("dividing given two elements " + (a / b));
+        LOGGER.info("dividing given two elements " + (a / b));
     }
 
 
     @Override
     public void get(int a, int b) {
-        System.out.println("printing two numbers " + a + " " + b);
-
+        LOGGER.info("printing two numbers " + a + " " + b);
     }
 
 }
 public class ThirdClass {
     public static void main(String[] args) {
-        CalculateA calculatea = new CalculateA();
-        calculatea.function1(calculatea);
-        calculatea.function2(calculatea);
-        calculatea.function3(calculatea);
-        calculatea.function4(calculatea);
-        calculatea.get(6, 7);
+        Logger LOGGER = Logger.getAnonymousLogger();
+        try {
+            CalculateA calculatea = new CalculateA();
+            calculatea.function1(calculatea);
+            calculatea.function2(calculatea);
+            calculatea.function3(calculatea);
+            calculatea.function4(calculatea);
+            calculatea.get(6, 7);
+        }
+        catch(Exception e) {
+            LOGGER.info("Exception: " + e);
+        }
     }
 }
 
